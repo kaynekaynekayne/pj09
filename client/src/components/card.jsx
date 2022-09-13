@@ -20,7 +20,7 @@ const card = ({event, stdate, eddate, genre}) => {
             }
             <CardContent sx={{height:85}}>
                 <Typography variant="subtitle1">
-                    <TextContainerStyle>{prfnm}</TextContainerStyle>
+                    <TitleStyle>{prfnm}</TitleStyle>
                 </Typography>
                 {genre && 
                     <Typography variant="subtitle2" color="text.secondary">
@@ -37,10 +37,11 @@ const card = ({event, stdate, eddate, genre}) => {
     )
 }
 
-const TextContainerStyle=styled.div`
+const TitleStyle=styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight:bold;
 `;
 
 export default card;
