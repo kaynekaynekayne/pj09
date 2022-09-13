@@ -1,21 +1,31 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import {Card, CardMedia, CardContent, Typography} from '@mui/material'
 
 const card = ({event}) => {
     const {prfnm,prfpdfrom,prfpdto,fcltynm,poster,mt20id,prfstate}=event;
 
     return (
-        <div>
-            <h3>{prfnm}</h3>
+        <Card>
             {poster &&
                 <Link to={`/info/${mt20id}`}>
-                    <img src={poster} alt="poster" style={{width:'100px'}}/>
+                    <CardMedia
+                        component="img" 
+                        image={poster}
+                        alt="poster" 
+                        sx={{height:400}}
+                    />
                 </Link>
             }
-            <h4>{prfpdfrom}~{prfpdto}</h4>
-            <h5>{prfstate}</h5>
-            {/* <h5>{fcltynm}</h5> */}
-        </div>
+            <CardContent sx={{height:80}}>
+                <Typography variant="p">
+                    {prfnm}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    {prfpdfrom}~{prfpdto}
+                </Typography>
+            </CardContent>
+        </Card>
     )
 }
 
