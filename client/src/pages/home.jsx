@@ -1,5 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {mainEvents} from '../api/kopis';
+import reformatData from '../utils/reformatData';
+import xmlConverter from '../utils/xmlConverter';
+import Card from '../components/card';
 
 const Home = () => {
 
@@ -11,8 +14,10 @@ const Home = () => {
 
     const getEvents=async()=>{
         try{
-            const a=await mainEvents();
-            console.log(a);
+            const response=await mainEvents();
+            const data=await xmlConverter(response);
+            const items=reformatData(data);
+            setEvents(items);
         }catch(err){
             console.log(err.message);
         }
@@ -20,12 +25,11 @@ const Home = () => {
 
     return (
         <div> 
-            {/* {events.length===0 ? <h2>Loading...</h2> :
+            {events.length===0 ? <h2>Loading...</h2> :
                 events.map((event)=>
                     <Card key={event.mt20id} event={event}/>
                 )
-            } */}
-            home
+            }
         </div>
     );
 };
