@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import {Card, CardMedia, CardContent, Typography} from '@mui/material'
+import styled from 'styled-components';
 
 const card = ({event, stdate, eddate, genre}) => {
     const {prfnm,poster,mt20id, prfstate}=event;
@@ -18,21 +19,28 @@ const card = ({event, stdate, eddate, genre}) => {
                 </Link>
             }
             <CardContent sx={{height:85}}>
-                <Typography variant="body1">{prfnm}</Typography>
+                <Typography variant="subtitle1">
+                    <TextContainerStyle>{prfnm}</TextContainerStyle>
+                </Typography>
                 {genre && 
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="subtitle2" color="text.secondary">
                         {genre}
                     </Typography>
                 }
                 {stdate && eddate && 
-                    <Typography variant="body2" color={prfstate==="공연중" ? "text.primary" : "text.disabled"}>
-                        {`${stdate}-${eddate} ${prfstate}`}
+                    <Typography variant="subtitle2" color={prfstate==="공연완료" ? "text.disabled" : "text.primary"}>
+                        {`${stdate} - ${eddate} ${prfstate}`}
                     </Typography>
                 }
             </CardContent>
-            
         </Card>
     )
 }
 
-export default card
+const TextContainerStyle=styled.div`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`;
+
+export default card;
