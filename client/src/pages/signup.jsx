@@ -11,6 +11,10 @@ const Signup = () => {
     const [confirmPassword, setConfirmPassword]=useState("");
     const [showPassword, setShowPassword]=useState(false);
 
+    let lowerCase=/(.*[a-z].*)/.test(password);
+    let upperCase=/(.*[A-Z].*)/.test(password);
+    let eightChars=password.length>=8;
+
     const handleSignup=async(e)=>{
         e.preventDefault();
         try{
@@ -69,6 +73,16 @@ const Signup = () => {
                         }
                     />
                 </FormControl>
+                {password && (
+                    <FormHelperText>
+                        <span className={lowerCase ? "text-success" : 'text-danger'}
+                            >소문자 포함 </span>
+                        <span className={upperCase ? "text-success" : "text-danger"}
+                            >대문자 포함 </span>
+                        <span className={eightChars ? "text-success" : 'text-danger'}
+                            >여덟자 이상 </span>
+                    </FormHelperText>  
+                )}
             </div>
             <div className="form-group">
                 <TextField
@@ -83,9 +97,9 @@ const Signup = () => {
                 {password && confirmPassword && (
                     <FormHelperText>
                         {password === confirmPassword ? 
-                            <span className="text-success">Correct</span>
+                            <span className="text-success">비밀번호 일치</span>
                         :
-                            <span className="text-danger">Passwords do not match</span>
+                            <span className="text-danger">비밀번호 불일치</span>
                         }
                     </FormHelperText>
                 )
