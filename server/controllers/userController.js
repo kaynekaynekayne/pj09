@@ -61,3 +61,16 @@ export const login=async(req,res)=>{
         username
     });
 };
+
+export const logout=(req,res)=>{
+    res.clearCookie("jwt");
+    return res.json({message:"성공적인 로그아웃!"});
+};
+
+export const getLoggedInUser=(req,res)=>{
+    const {username}=req.user;
+    return res.status(200).json({
+        message:"유저가 로그인 되어 있습니다.",
+        username,
+    })
+}

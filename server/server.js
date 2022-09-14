@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import morgan from 'morgan';
 import cors from 'cors';
 import 'dotenv/config';
+import cookieParser from 'cookie-parser';
 import expressValidator from 'express-validator';
 import userRouter from './routes/userRouter.js';
 
@@ -16,6 +17,8 @@ app.use(morgan('dev'));
 app.use(cors({origin:true, credentials:true}));
 app.use(json());
 app.use(urlencoded({extended:false}));
+
+app.use(cookieParser());
 app.use(expressValidator());
 
 app.use("/", userRouter);

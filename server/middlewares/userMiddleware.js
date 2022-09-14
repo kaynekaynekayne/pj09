@@ -1,3 +1,5 @@
+import User from "../models/User.js";
+
 export const userRegisterValidator=(req,res,next)=>{
     req.check("username","닉네임은 필수입니다.").notEmpty();
     
@@ -15,4 +17,16 @@ export const userRegisterValidator=(req,res,next)=>{
         return res.status(400).json({error:firstError})
     };
     next();
+};
+
+export const userById=async(req,res,next)=>{
+    User.findById(req._id).exec((err,user)=>{
+        if(err || !user){
+            return res.status(404).json({
+                error:"유저를 찾을 수 없습니다."
+            })
+        }
+        req.user=user;
+        next();
+    });
 }
