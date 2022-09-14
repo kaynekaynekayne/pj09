@@ -12,7 +12,7 @@ export const userRegisterValidator=(req,res,next)=>{
     const errors=req.validationErrors();
     if(errors){
         const firstError=errors.map(err=>err.msg)[0];
-        return res.status(404).json({error:firstError})
+        return res.status(400).json({error:firstError})
     };
     next();
 }
