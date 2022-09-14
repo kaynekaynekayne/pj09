@@ -3,8 +3,8 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 export const register=async(req,res)=>{
-    const {username, email, password, password2}=req.body;
-    
+    const {username, email, password, confirmPassword}=req.body;
+
     const usernameExists=await User.findOne({username});
     const emailExists=await User.findOne({email});
 
@@ -18,7 +18,8 @@ export const register=async(req,res)=>{
             error:"이미 사용중인 이메일입니다."
         })
     }
-    if(password!==password2){
+    if(password!==confirmPassword){
+        console.log(password, confirmPassword)
         return res.status(400).json({
             error:"비밀번호가 일치하지 않습니다."
         })
@@ -67,10 +68,10 @@ export const logout=(req,res)=>{
     return res.json({message:"성공적인 로그아웃!"});
 };
 
-export const getLoggedInUser=(req,res)=>{
+export const isUserLoggedIn=(req,res)=>{
     const {username}=req.user;
     return res.status(200).json({
         message:"유저가 로그인 되어 있습니다.",
         username,
     })
-}
+};

@@ -3,6 +3,8 @@ import {FormHelperText, Button, TextField, FormControl, InputLabel, OutlinedInpu
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { Link } from 'react-router-dom';
+import {signup} from '../api/user';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
     const [email, setEmail]=useState("");
@@ -10,17 +12,27 @@ const Signup = () => {
     const [password, setPassword]=useState("");
     const [confirmPassword, setConfirmPassword]=useState("");
     const [showPassword, setShowPassword]=useState(false);
-
+    
     let lowerCase=/(.*[a-z].*)/.test(password);
     let upperCase=/(.*[A-Z].*)/.test(password);
     let eightChars=password.length>=8;
-
+    
+    const navigate=useNavigate();
+    
     const handleSignup=async(e)=>{
         e.preventDefault();
+
         try{
             //user api 자리
+            const resp=await signup({email,username,password,confirmPassword});
+            console.log(resp);
+            if(resp.error) alert(resp.error);
+            else {
+                alert(resp.message);
+                navigate("/login");
+            }
         }catch(err){
-            
+            alert(err.message);
         }
     };
 
