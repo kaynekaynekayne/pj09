@@ -1,10 +1,11 @@
 import User from "../models/User.js";
 
 export const userRegisterValidator=(req,res,next)=>{
-    req.check("username","닉네임은 필수입니다.").notEmpty();
-    
     req.check("email","이메일은 필수입니다.").notEmpty();
     req.check("email","올바른 이메일 형식이 아닙니다.").isEmail();
+    
+    req.check("username","닉네임은 필수입니다.").notEmpty();
+    
 
     req.check("password","비밀번호는 필수입니다.").notEmpty();
     req.check("password").isLength({min:8}).withMessage("비밀번호는 여덟자 이상이어야 합니다.");

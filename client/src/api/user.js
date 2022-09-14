@@ -2,31 +2,30 @@ import axios from 'axios';
 
 export const signup=async({username, email, password, confirmPassword}={})=>{
     const user={username, email, password, confirmPassword};
-    
     try{
-        // const response=await axios.post(`${process.env.REACT_APP_LOCAL_URL}/register`,
-        //     JSON.stringify(user),{
-        //         headers:{
-        //             Accept:'application/json',
-        //             "Content-Type":"application/json",
-        //         }
-        //     }
-        // );
+        const response=await axios.post(`${process.env.REACT_APP_LOCAL_URL}/register`,
+            user,
+            {
+                headers:{
+                    Accept:'application/json',
+                    "Content-Type":"application/json",
+                }
+            }
+        ) 
+        return await response.data;
+
+        // const response=await fetch(`${process.env.REACT_APP_LOCAL_URL}/register`,{
+        //     method:"POST",
+        //     headers:{
+        //         Accept:"application/json",
+        //         "Content-Type":"application/json"
+        //     },
+        //     body:JSON.stringify(user)
+        // });
         // console.log(response);
         // return await response.json();
-
-        const res=await fetch(`${process.env.REACT_APP_LOCAL_URL}/register`,{
-            method:"POST",
-            headers:{
-                Accept:"application/json",
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify(user)
-        });
-
-        return await res.json();
     }catch(err){
-        throw new Error(`가입을 할 수 없습니다. ${err}`)
+        throw new Error(err.response.data.error)
     }
 };
 

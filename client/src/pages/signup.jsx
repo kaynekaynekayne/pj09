@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {FormHelperText, Button, TextField, FormControl, InputLabel, OutlinedInput, Input, IconButton, InputAdornment} from '@mui/material';
+import {FormHelperText, Button, TextField, FormControl, InputLabel, Input, IconButton, InputAdornment} from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { Link } from 'react-router-dom';
@@ -23,9 +23,7 @@ const Signup = () => {
         e.preventDefault();
 
         try{
-            //user api 자리
             const resp=await signup({email,username,password,confirmPassword});
-            console.log(resp);
             if(resp.error) alert(resp.error);
             else {
                 alert(resp.message);
@@ -121,6 +119,7 @@ const Signup = () => {
                 <Button
                     onClick={handleSignup}
                     variant="outlined"
+                    disabled={!email || !username || !password || !confirmPassword || password!==confirmPassword || !upperCase || !lowerCase || !eightChars}
                 >회원가입</Button>
             </div>
             <div className='mt-3 mb-3'>
