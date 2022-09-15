@@ -2,9 +2,12 @@ import React,{useState} from 'react';
 import {Button, TextField, FormControl, InputLabel, OutlinedInput, Input, IconButton, InputAdornment} from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import {login} from '../api/user';
+
 
 const Login = () => {
+    const navigate=useNavigate();
     const [email,setEmail]=useState("");
     const [password, setPassword]=useState("");
     const [showPassword, setShowPassword]=useState(false);
@@ -13,8 +16,15 @@ const Login = () => {
         e.preventDefault();
         try{
             //user api 자리
+            const resp=await login({email, password});
+            if(!resp.error){
+                alert(resp.message);
+                navigate("/");
+            } else{
+                alert(resp.error);
+            }
         }catch(err){
-            
+            alert(err.message);
         }
     };
 

@@ -8,14 +8,15 @@ export const register=async(req,res)=>{
     const usernameExists=await User.findOne({username});
     const emailExists=await User.findOne({email});
 
-    if(usernameExists){
-        return res.status(400).json({
-            error:"이미 사용중인 닉네임입니다."
-        })
-    }
     if(emailExists){
         return res.status(400).json({
             error:"이미 사용중인 이메일입니다."
+        })
+    }
+    
+    if(usernameExists){
+        return res.status(400).json({
+            error:"이미 사용중인 닉네임입니다."
         })
     }
     if(password!==confirmPassword){

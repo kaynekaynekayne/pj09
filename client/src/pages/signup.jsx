@@ -24,10 +24,11 @@ const Signup = () => {
 
         try{
             const resp=await signup({email,username,password,confirmPassword});
-            if(resp.error) alert(resp.error);
-            else {
+            if(!resp.error){
                 alert(resp.message);
                 navigate("/login");
+            } else{
+                alert(resp.error);
             }
         }catch(err){
             alert(err.message);
