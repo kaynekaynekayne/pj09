@@ -45,9 +45,9 @@ export const logout=async()=>{
                 withCredentials:true,
             }
         )
-        return await response.json();
+        return await response.data;
     }catch(err){
-        console.log(err);
+        console.log(err.response.data.error);
     }
 };
 

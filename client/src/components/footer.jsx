@@ -1,12 +1,30 @@
 import React from 'react';
 import {Button} from '@mui/material';
+import Swal from 'sweetalert2'
+import {logout} from '../api/user';
+import { useNavigate } from 'react-router-dom';
+
 const Footer = () => {
+    const navigate=useNavigate();
 
     const handleLogout=async()=>{
-        try{
-
-        }catch(err){
-        
+        const resp=await logout();
+        if(!resp.error){
+            Swal.fire({
+                icon: 'success',
+                text: resp.message,
+                showConfirmButton: false,
+                timer: 1500
+            })
+            navigate("/login");
+        } else{
+            Swal.fire({
+                icon: 'error',
+                text: resp.error,
+                showConfirmButton:false,
+                width:'20rem',
+                position:'top',
+            })
         }
     }
 
