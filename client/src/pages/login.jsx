@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import {Button, TextField, FormControl, InputLabel, OutlinedInput, Input, IconButton, InputAdornment} from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 import {login} from '../api/user';
 
@@ -15,16 +16,32 @@ const Login = () => {
     const handleLogin=async(e)=>{
         e.preventDefault();
         try{
-            //user api 자리
             const resp=await login({email, password});
             if(!resp.error){
-                alert(resp.message);
+                Swal.fire({
+                    icon: 'success',
+                    text: resp.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 navigate("/");
             } else{
-                alert(resp.error);
+                Swal.fire({
+                    icon: 'error',
+                    text: resp.error,
+                    showConfirmButton:false,
+                    width:'20rem',
+                    position:'top',
+                })
             }
         }catch(err){
-            alert(err.message);
+            Swal.fire({
+                icon:"error",
+                text: err.message,
+                showConfirmButton:false,
+                width:'20rem',
+                position:'top',
+            })
         }
     };
 

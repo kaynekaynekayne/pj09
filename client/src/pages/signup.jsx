@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import {FormHelperText, Button, TextField, FormControl, InputLabel, Input, IconButton, InputAdornment} from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import {signup} from '../api/user';
 import { useNavigate } from 'react-router-dom';
@@ -25,13 +26,30 @@ const Signup = () => {
         try{
             const resp=await signup({email,username,password,confirmPassword});
             if(!resp.error){
-                alert(resp.message);
+                Swal.fire({
+                    icon: 'success',
+                    text: resp.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 navigate("/login");
             } else{
-                alert(resp.error);
+                Swal.fire({
+                    icon: 'error',
+                    text: resp.error,
+                    showConfirmButton:false,
+                    width:'20rem',
+                    position:'top',
+                })
             }
         }catch(err){
-            alert(err.message);
+            Swal.fire({
+                icon:"error",
+                text: err.message,
+                showConfirmButton:false,
+                width:'20rem',
+                position:'top',
+            })
         }
     };
 
