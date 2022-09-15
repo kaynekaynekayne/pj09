@@ -13,16 +13,16 @@ export const register=async(req,res)=>{
             error:"이미 사용중인 이메일입니다."
         })
     }
-    
+
     if(usernameExists){
         return res.status(400).json({
-            error:"이미 사용중인 닉네임입니다."
+            error:"이미 사용중인 닉네임입니다"
         })
     }
     if(password!==confirmPassword){
         console.log(password, confirmPassword)
         return res.status(400).json({
-            error:"비밀번호가 일치하지 않습니다."
+            error:"비밀번호가 일치하지 않습니다"
         })
     }
 
@@ -43,13 +43,13 @@ export const login=async(req,res)=>{
     const user=await User.findOne({email});
     if(!user){
         return res.status(400).json({
-            error:"이메일이 존재하지 않습니다."
+            error:"이메일이 존재하지 않습니다"
         })
     }
 
     const match=await bcrypt.compare(password, user.password);
     if(!match){
-        return res.status(400).json({error:"비밀번호가 일치하지 않습니다."});
+        return res.status(400).json({error:"비밀번호가 일치하지 않습니다"});
     };
 
     const token=jwt.sign({_id:user._id},process.env.TOKEN_SECRET);
@@ -66,13 +66,13 @@ export const login=async(req,res)=>{
 
 export const logout=(req,res)=>{
     res.clearCookie("jwt");
-    return res.json({message:"성공적인 로그아웃!"});
+    return res.json({message:"성공적인 로그아웃"});
 };
 
 export const isUserLoggedIn=(req,res)=>{
     const {username}=req.user;
     return res.status(200).json({
-        message:"유저가 로그인 되어 있습니다.",
+        message:"유저가 로그인 되어 있습니다",
         username,
     })
 };
