@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import Header from './components/header';
 import Search from './components/search';
@@ -6,8 +5,6 @@ import Footer from './components/footer';
 import Pages from './pages/pages';
 import styled from 'styled-components';
 import { UserContextProvider } from './context/userContext';
-import {isUserLoggedIn} from './api/user';
-import Swal from 'sweetalert2';
 
 function App() {
 
