@@ -6,16 +6,30 @@ import Searched from './searched';
 import Login from './login';
 import Signup from './signup';
 import styled from 'styled-components';
+import { ProtectedRoute } from '../ProtectedRoute';
 
 const Pages = () => {
     return (
         <PageStyle>
             <Routes>
-                <Route path="/" element={<Home />}/>
-                <Route path="/login" element={<Login />}/>
-                <Route path="/signup" element={<Signup />}/>
-                <Route path="/searched/:word" element={<Searched />}/>
-                <Route path="/info/:id" element={<Info />}/>
+                <Route 
+                    path="/" 
+                    element={<ProtectedRoute><Home /></ProtectedRoute>}
+                />
+                <Route 
+                    path="/login" 
+                    element={<Login />}/>
+                <Route 
+                    path="/signup" 
+                    element={<Signup/>}/>
+                <Route 
+                    path="/searched/:word" 
+                    element={<ProtectedRoute><Searched /></ProtectedRoute>}
+                />
+                <Route 
+                    path="/info/:id" 
+                    element={<ProtectedRoute><Info /></ProtectedRoute>}
+                />
             </Routes>
         </PageStyle>
     )
