@@ -52,14 +52,22 @@ export const logout=async()=>{
 };
 
 export const isUserLoggedIn=async()=>{
-    try{
-        const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}/user`,
-            {
-                withCredentials:true,
-            }
-        )
-        return await response.json();
-    }catch(err){
-        throw new Error("로그인을 해주십시오.");
-    }
+    const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}/user`,
+        {
+            withCredentials:true,
+        }
+    )
+    console.log(response)
+    return await response.data;
+
+    // try{
+    //     const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}/user`,
+    //         {
+    //             withCredentials:true,
+    //         }
+    //     )
+    //     return await response.data;
+    // }catch(err){
+    //     throw new Error("로그인을 해주십시오.");
+    // }
 };

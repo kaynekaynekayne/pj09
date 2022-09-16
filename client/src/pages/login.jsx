@@ -1,14 +1,16 @@
-import React,{useState} from 'react';
+import React,{useState, useContext} from 'react';
 import {Button, TextField, FormControl, InputLabel, OutlinedInput, Input, IconButton, InputAdornment} from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 import {login} from '../api/user';
-
+import { userContext } from '../context/userContext';
 
 const Login = () => {
     const navigate=useNavigate();
+    const {setUserInfo}=useContext(userContext);
+
     const [email,setEmail]=useState("");
     const [password, setPassword]=useState("");
     const [showPassword, setShowPassword]=useState(false);
@@ -23,7 +25,8 @@ const Login = () => {
                     text: resp.message,
                     showConfirmButton: false,
                     timer: 1500
-                })
+                });
+                setUserInfo(resp.username);
                 navigate("/");
             } else{
                 Swal.fire({
