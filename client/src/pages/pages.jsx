@@ -10,6 +10,7 @@ import { useUserContext } from '../context/userContext';
 
 const Pages = () => {
     const {user}=useUserContext();
+    console.log(user);
 
     return (
         <PageStyle>

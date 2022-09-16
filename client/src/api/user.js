@@ -68,6 +68,6 @@ export const isUserLoggedIn=async()=>{
         )
         return await response.data;
     }catch(err){
-        throw new Error("로그인을 해주십시오.");
+        throw new Error("로그인을 하십시오");
     }
 };

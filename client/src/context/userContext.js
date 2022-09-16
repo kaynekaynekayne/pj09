@@ -1,6 +1,6 @@
 import {createContext, useContext, useEffect, useState} from 'react';
 import {isUserLoggedIn} from '../api/user';
-
+import Swal from 'sweetalert2';
 
 export const userContext=createContext(null);
 
@@ -15,7 +15,13 @@ export const UserContextProvider=({children})=>{
             console.log(resp.username)
             setUser(resp.username)
         })
-        .catch(err=>console.log("userContet err",err));//swal
+        .catch(err=>Swal.fire({
+            icon: 'warning',
+            text: err.message,
+            showConfirmButton:false,
+            width:'20rem',
+            position:'top',
+        }));//swal
         
         return ()=>unsubscribe;
         

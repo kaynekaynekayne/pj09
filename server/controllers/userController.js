@@ -33,7 +33,7 @@ export const register=async(req,res)=>{
     })
 
     res.status(201).json({
-        message:"성공적인 회원가입!"
+        message:"성공적인 회원가입"
     })
 };
 
@@ -59,7 +59,7 @@ export const login=async(req,res)=>{
 
     const {username}=user;
     return res.status(201).json({
-        message:"성공적인 로그인!",
+        message:"성공적인 로그인",
         username
     });
 };
