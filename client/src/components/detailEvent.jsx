@@ -1,9 +1,14 @@
 import React from 'react'
 
-const DetailEvent = () => {
+const DetailEvent = ({details}) => {
 
+    const {prfnm,genrem,poster,fcltynm}=details;
     return (
-        <div>detail event</div>
+        <section>
+            <img src={poster} style={{width:"300px"}}/>
+            <h4>{prfnm}</h4>
+            <h5>{fcltynm}</h5>
+        </section>
     )
 }
 

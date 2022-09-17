@@ -6,6 +6,7 @@ import {useParams} from 'react-router-dom';
 import {eventDetail, placeDetail} from '../api/kopis';
 import xmlConverter from '../utils/xmlConverter';
 import reformatDetailData from '../utils/reformatDetailData';
+import {Grid, Container} from '@mui/material'
 
 const Detail = () => {
     const params=useParams();
@@ -49,12 +50,20 @@ const Detail = () => {
     },[id]);
     
     return (
-        <section>
-            <div>
-                <DetailEvent />
-                <DetailMap />
-            </div>
-        </section>
+        <Container>
+            <Grid container mb={5}>
+                <Grid item xs={6}>
+                    <DetailEvent details={details}/>
+                </Grid>
+                <Grid item xs={6}>
+                    <DetailMap />
+                </Grid>
+                {/* <Grid item xs={1}>
+                </Grid>
+                <Grid item xs={1}>
+                </Grid> */}
+            </Grid>
+        </Container>
     )
 }
 
