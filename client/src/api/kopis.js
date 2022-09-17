@@ -19,7 +19,7 @@ export const mainEvents=async()=>{
         });
         return response.data;
     }catch(err){
-        console.log(err.message);
+        throw new Error(err.message);
     }
 };
 
@@ -37,6 +37,32 @@ export const search=async(query)=>{
         })
         return response.data;
     }catch(err){
-        console.log(err.message);
+        throw new Error(err.message);
+    }
+};
+
+export const eventDetail=async(id)=>{
+    try{
+        const response=await axios.get(`${BASE_URL}/pblprfr/${id}`,{
+            params:{
+                service:process.env.REACT_APP_OPENDATA_KEY,
+            }
+        });
+        return response.data;
+    }catch(err){
+        throw new Error(err.message); //throw로 고치자 전부
+    }
+};
+
+export const placeDetail=async(code)=>{
+    try{
+        const response=await axios.get(`${BASE_URL}/prfplc/${code}`,{
+            params:{
+                service:process.env.REACT_APP_OPENDATA_KEY,
+            }
+        })
+        return response.data;
+    }catch(err){
+        throw new Error(err.message);
     }
 }

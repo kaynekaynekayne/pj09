@@ -9,7 +9,7 @@ const card = ({event, stdate, eddate, genre}) => {
     return (
         <Card>
             {poster &&
-                <Link to={`/info/${mt20id}`}>
+                <Link to={`/detail/${mt20id}`}>
                     <CardMedia
                         component="img" 
                         image={poster}

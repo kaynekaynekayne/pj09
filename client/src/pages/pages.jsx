@@ -1,7 +1,7 @@
 import React from 'react'
 import {Routes, Route, Navigate} from 'react-router-dom';
 import Home from './home';
-import Info from './info';
+import Detail from './detail';
 import Searched from './searched';
 import Login from './login';
 import Signup from './signup';
@@ -10,7 +10,6 @@ import { useUserContext } from '../context/userContext';
 
 const Pages = () => {
     const {user}=useUserContext();
-    console.log(user);
 
     return (
         <PageStyle>
@@ -32,8 +31,8 @@ const Pages = () => {
                     element={user ? <Searched /> : <Navigate to="/login" />}
                 />
                 <Route 
-                    path="/info/:id" 
-                    element={user ? <Info /> : <Navigate to="/login" />}
+                    path="/detail/:id" 
+                    element={user ? <Detail /> : <Navigate to="/login" />}
                 />
             </Routes>
         </PageStyle>
