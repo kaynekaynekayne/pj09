@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 export const signup=async({username, email, password, confirmPassword}={})=>{
-    const user={username, email, password, confirmPassword};
+    const userInfo={username, email, password, confirmPassword};
     try{
         const response=await axios.post(`${process.env.REACT_APP_LOCAL_URL}/register`,
-            user,
+            userInfo,
             {
                 headers:{
                     Accept:'application/json',
@@ -20,10 +20,10 @@ export const signup=async({username, email, password, confirmPassword}={})=>{
 };
 
 export const login=async({email, password}={})=>{
-    const user={email, password};
+    const userInfo={email, password};
     try{
         const response=await axios.post(`${process.env.REACT_APP_LOCAL_URL}/login`,
-            user,
+            userInfo,
             {
                 withCredentials:true,
                 headers:{

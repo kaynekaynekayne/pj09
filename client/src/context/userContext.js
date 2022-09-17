@@ -6,7 +6,9 @@ export const userContext=createContext(null);
 
 export const UserContextProvider=({children})=>{
     
-    const [user,setUser]=useState(null);
+    const localUser=localStorage.getItem("user");
+    const [user,setUser]=useState(localUser);
+
     console.log("userContext user: ",user);//맨처음에 null로 뜨는게 치명적, 로그인이 되어있어도 뒤늦게 바뀜
     
     useEffect(()=>{

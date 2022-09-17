@@ -16,12 +16,11 @@ const Search = () => {
         setTerm("");
     }
 
-    return user && 
-        <Box
-            component="form"
-            mt={5}
-            mb={8}
-            onSubmit={submitHandler}>
+    return <Box
+                component="form"
+                mt={5}
+                mb={8}
+                onSubmit={submitHandler}>
             <div>
                 <Input
                     required
