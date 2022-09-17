@@ -6,8 +6,6 @@ export const verifyToken=(req,res,next)=>{
         res.status(403).json({
             error:"액세스 토큰이 없습니다"
         })
-        //밑에 error랑 둘 다 /login으로 유도하는 방향으로 가야 함
-        //"/"로 가도 "/login"으로 유도
     }
 
     let payload;

@@ -29,7 +29,7 @@ const Searched = () => {
 
     return (
         <Container>
-            {/* {searchedEvents.length===0 ? <h2>Loading...</h2> : } */}
+            {searchedEvents.length===0 ? <h2>Loading...</h2> : 
                 <Grid container spacing={4} mb={5}> 
                     {searchedEvents.map((event)=>
                         <Grid item xs={12} sm={6} md={3} key={event.mt20id}>
@@ -37,6 +37,7 @@ const Searched = () => {
                         </Grid>
                     )}
                 </Grid>
+            }
         </Container>
     )
 }

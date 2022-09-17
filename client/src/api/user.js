@@ -52,14 +52,6 @@ export const logout=async()=>{
 };
 
 export const isUserLoggedIn=async()=>{
-    // const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}/user`,
-    //     {
-    //         withCredentials:true,
-    //     }
-    // )
-    // console.log(response.data)
-    // return await response.data;
-
     try{
         const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}/user`,
             {

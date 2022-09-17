@@ -23,7 +23,7 @@ export const UserContextProvider=({children})=>{
             showConfirmButton:false,
             width:'20rem',
             position:'top',
-        }));//swal
+        }));
         
         return ()=>unsubscribe;
         
