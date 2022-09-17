@@ -1,9 +1,9 @@
 import React from 'react'
 
-const DetailMap = () => {
-
+const DetailMap = ({location}) => {
+    console.log(location);
     return (
-        <div>DetailMap</div>
+        <div>{location.address}</div>
     )
 }
 

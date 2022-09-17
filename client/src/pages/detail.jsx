@@ -51,17 +51,13 @@ const Detail = () => {
     
     return (
         <Container>
-            <Grid container mb={5}>
-                <Grid item xs={6}>
+            <Grid container mb={5} >
+                <Grid item xs={12} sm={12} md={6} mb={4}>
                     <DetailEvent details={details}/>
                 </Grid>
-                <Grid item xs={6}>
-                    <DetailMap />
+                <Grid item xs={12} sm={12} md={6}>
+                    <DetailMap location={location}/>
                 </Grid>
-                {/* <Grid item xs={1}>
-                </Grid>
-                <Grid item xs={1}>
-                </Grid> */}
             </Grid>
         </Container>
     )
