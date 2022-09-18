@@ -10,7 +10,7 @@ import {IconButton, TextField} from '@mui/material'
 import ImportExportIcon from '@mui/icons-material/ImportExport';
 import ClearIcon from '@mui/icons-material/Clear';
 import DirectionsTransitIcon from '@mui/icons-material/DirectionsTransit';
-import RedoIcon from '@mui/icons-material/Redo';
+import ReplayTwoToneIcon from '@mui/icons-material/ReplayTwoTone';
 import styled from 'styled-components';
 
 const containerStyle = {
@@ -67,18 +67,12 @@ const DetailMap = ({location}) => {
         setDuration("");
         setOrigin("");
         setDestination("");
-    }
+    };
 
     return isLoaded ? (
         <section>
             <div>
                 <Autocomplete>
-                    {/* <TextField 
-                        placeholder="출발지"
-                        onChange={(e)=>setOrigin(e.target.value)}
-                        value={origin}
-                        hiddenLabel
-                    /> */}
                     <Input 
                         placeholder="출발지"
                         type="text"
@@ -87,13 +81,6 @@ const DetailMap = ({location}) => {
                     />
                 </Autocomplete>
                 <Autocomplete>
-                    {/* <TextField 
-                        hiddenLabel
-                        value={destination}
-                        onChange={(e)=>setDestination(e.target.value)}
-                        placeholder="목적지"
-
-                    /> */}
                     <Input
                         placeholder="목적지"
                         type="text"
@@ -101,25 +88,29 @@ const DetailMap = ({location}) => {
                         value={destination}
                     />
                 </Autocomplete>
-                <IconButton aria-label="reverse" onClick={onToggleClick}>
-                    <ImportExportIcon/>
-                </IconButton>
-                <IconButton aria-label="go" onClick={getRoute} color="primary">
-                    <DirectionsTransitIcon />
-                </IconButton>
-                <IconButton aria-label="clear" onClick={clearRoute}>
-                    <ClearIcon />
-                </IconButton>
+                <MapIconBox>
+                    <div>
+                        <IconButton aria-label="reverse" onClick={onToggleClick}>
+                            <ImportExportIcon/>
+                        </IconButton>
+                        <IconButton aria-label="go" onClick={getRoute} color="primary">
+                            <DirectionsTransitIcon />
+                        </IconButton>
+                        <IconButton aria-label="clear" onClick={clearRoute}>
+                            <ClearIcon />
+                        </IconButton>
+                    </div>
+                    <IconButton aria-label="center" onClick={()=>map.panTo({lat,lng})}>
+                        <ReplayTwoToneIcon />
+                    </IconButton>
+                </MapIconBox>
                 <div>
                 {distance && duration && <>
-                    <span>거리 {distance} </span>
-                    <span>이동 {duration}</span>
+                    <span>거리 <strong>{distance} </strong></span>
+                    <span>이동 <strong>{duration}</strong></span>
                 </>
                 }
                 </div>
-                <IconButton aria-label="center" onClick={()=>map.panTo({lat,lng})}>
-                    <RedoIcon />
-                </IconButton>
             </div>
             <GoogleMap
                 zoom={18}
@@ -128,7 +119,7 @@ const DetailMap = ({location}) => {
                 options={{
                     mapTypeControl:false,
                     streetViewControl:false,
-                    gestureHandling:'greedy'
+                    gestureHandling:'greedy',
                 }}
                 onLoad={(map)=>setMap(map)}
                 
@@ -144,6 +135,11 @@ const Input=styled.input`
     width:100%;
     padding:0.5rem;
     outline:0;
-    margin-bottom:0.3rem;
+    margin-bottom:0.5rem;
+`;
+
+const MapIconBox=styled.div`
+    display:flex;
+    justify-content:space-between;
 `;
 export default DetailMap;

@@ -19,12 +19,12 @@ const DetailEvent = ({details}) => {
         prfstate
     }=details;
     return (
-        <section>
+        <section style={{width:'100%',height:"100%",backgroundColor:'tomato'}}>
             {Object.keys(details).length===0 ? <h3>Loading...</h3> :
             <>
-                <img src={poster} style={{width:"100%"}}/>
                 <div>
                     <h5>{prfnm}</h5>
+                    <img src={poster} style={{width:'100%', height:"50%"}}/>
                     <h6>{fcltynm}</h6>
                     <span>{genrenm}</span>
                 </div>
@@ -44,6 +44,7 @@ const DetailEvent = ({details}) => {
                         <Typography variant="subtitle2">{pcseguidance}</Typography>
                     </Grid>
                 </Grid>
+
             </>
             }
         </section>
