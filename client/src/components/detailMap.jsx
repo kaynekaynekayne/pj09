@@ -6,8 +6,12 @@ import {
     Autocomplete,
     DirectionsRenderer,
 } from '@react-google-maps/api';
+import {IconButton, TextField} from '@mui/material'
 import ImportExportIcon from '@mui/icons-material/ImportExport';
-import RefreshIcon from '@mui/icons-material/Refresh';
+import ClearIcon from '@mui/icons-material/Clear';
+import DirectionsTransitIcon from '@mui/icons-material/DirectionsTransit';
+import RedoIcon from '@mui/icons-material/Redo';
+import styled from 'styled-components';
 
 const containerStyle = {
     width: '100%',
@@ -69,7 +73,13 @@ const DetailMap = ({location}) => {
         <section>
             <div>
                 <Autocomplete>
-                    <input 
+                    {/* <TextField 
+                        placeholder="출발지"
+                        onChange={(e)=>setOrigin(e.target.value)}
+                        value={origin}
+                        hiddenLabel
+                    /> */}
+                    <Input 
                         placeholder="출발지"
                         type="text"
                         onChange={(e)=>setOrigin(e.target.value)}
@@ -77,25 +87,39 @@ const DetailMap = ({location}) => {
                     />
                 </Autocomplete>
                 <Autocomplete>
-                    <input 
+                    {/* <TextField 
+                        hiddenLabel
+                        value={destination}
+                        onChange={(e)=>setDestination(e.target.value)}
+                        placeholder="목적지"
+
+                    /> */}
+                    <Input
                         placeholder="목적지"
                         type="text"
                         onChange={(e)=>setDestination(e.target.value)}
                         value={destination}
                     />
                 </Autocomplete>
-                <button onClick={onToggleClick}>
+                <IconButton aria-label="reverse" onClick={onToggleClick}>
                     <ImportExportIcon/>
-                </button>
-                <button onClick={getRoute} type="submit">Go</button>
-                <button onClick={clearRoute}>
-                    <RefreshIcon />
-                </button>
+                </IconButton>
+                <IconButton aria-label="go" onClick={getRoute} color="primary">
+                    <DirectionsTransitIcon />
+                </IconButton>
+                <IconButton aria-label="clear" onClick={clearRoute}>
+                    <ClearIcon />
+                </IconButton>
                 <div>
-                    <p>거리 {distance}</p>
-                    <p>이동 {duration}</p>
+                {distance && duration && <>
+                    <span>거리 {distance} </span>
+                    <span>이동 {duration}</span>
+                </>
+                }
                 </div>
-                <button onClick={()=>map.panTo({lat,lng})}>돌아가기</button>
+                <IconButton aria-label="center" onClick={()=>map.panTo({lat,lng})}>
+                    <RedoIcon />
+                </IconButton>
             </div>
             <GoogleMap
                 zoom={18}
@@ -114,6 +138,12 @@ const DetailMap = ({location}) => {
             </GoogleMap>
         </section>
     ):<h3>Loading... </h3>
-}
+};
 
+const Input=styled.input`
+    width:100%;
+    padding:0.5rem;
+    outline:0;
+    margin-bottom:0.3rem;
+`;
 export default DetailMap;
