@@ -7,10 +7,11 @@ import {
     DirectionsRenderer,
 } from '@react-google-maps/api';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 const containerStyle = {
     width: '100%',
-    height: '100vh'
+    height: '80vh'
 };
 
 const DetailMap = ({location}) => {
@@ -33,7 +34,7 @@ const DetailMap = ({location}) => {
 
     const onToggleClick=()=>{
         setOrigin(destination);
-        setDistance(origin);
+        setDestination(origin);
     };
 
     const getRoute=async()=>{
@@ -84,13 +85,15 @@ const DetailMap = ({location}) => {
                     />
                 </Autocomplete>
                 <button onClick={onToggleClick}>
-                    <ImportExportIcon />
+                    <ImportExportIcon/>
                 </button>
                 <button onClick={getRoute} type="submit">Go</button>
-                <button onClick={clearRoute}></button>
+                <button onClick={clearRoute}>
+                    <RefreshIcon />
+                </button>
                 <div>
                     <p>거리 {distance}</p>
-                    <p>이동시간 {duration}</p>
+                    <p>이동 {duration}</p>
                 </div>
                 <button onClick={()=>map.panTo({lat,lng})}>돌아가기</button>
             </div>

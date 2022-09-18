@@ -56,7 +56,10 @@ export const isUserLoggedIn=async()=>{
         const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}/user`,
             {
                 withCredentials:true,
-            }
+                headers:{
+                    "Authorization":"Bearer "+localStorage.getItem("user")
+                }
+            },
         )
         return await response.data;
     }catch(err){

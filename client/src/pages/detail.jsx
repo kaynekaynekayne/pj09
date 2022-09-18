@@ -52,13 +52,13 @@ const Detail = () => {
     return (
         <Container>
             <Grid container mb={5} spacing={5}>
-                <Grid item xs={12} sm={6} md={6} mb={4}>
-                    <DetailEvent details={details}/>
-                </Grid>
                 <Grid item xs={12} sm={6} md={6}>
                     {!Object.values(location).some(x=>x===null) &&
                         <DetailMap location={location}/>
                     }
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} mb={4}>
+                    <DetailEvent details={details}/>
                 </Grid>
             </Grid>
         </Container>

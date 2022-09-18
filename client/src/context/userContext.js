@@ -17,13 +17,17 @@ export const UserContextProvider=({children})=>{
             console.log(resp.username)
             setUser(resp.username)
         })
-        .catch(err=>Swal.fire({
-            icon: 'warning',
-            text: err.message,
-            showConfirmButton:false,
-            width:'20rem',
-            position:'top',
-        }));
+        .catch(err=> {
+            localStorage.removeItem("user");
+            setUser(null);
+            Swal.fire({
+                icon: 'warning',
+                text: err.message,
+                showConfirmButton:false,
+                width:'20rem',
+                position:'top',
+            })
+        });
         
         return ()=>unsubscribe;
         
