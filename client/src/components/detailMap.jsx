@@ -15,7 +15,7 @@ import styled from 'styled-components';
 
 const containerStyle = {
     width: '100%',
-    height: '80vh'
+    height: '423px'
 };
 
 const DetailMap = ({location}) => {

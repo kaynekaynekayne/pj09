@@ -1,11 +1,16 @@
-import React from 'react'
-import {Typography, Grid, Container} from '@mui/material'
+import React,{useState} from 'react'
+import {Typography, Grid, Container, Card, 
+    CardHeader, CardMedia,CardContent, CardActions,
+Collapse,
+IconButton, } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import trimFullYear from '../utils/trimFullYear';
 import styled from 'styled-components';
 
 
 const DetailEvent = ({details}) => {
 
+    const [expanded, setExpanded]=useState(false);
     const {
         prfnm,
         genrenm,
@@ -18,17 +23,36 @@ const DetailEvent = ({details}) => {
         pcseguidance,
         prfstate
     }=details;
+
+    const handleExpand=()=>setExpanded(prev=>!prev);
+    
     return (
-        <section style={{width:'100%',height:"100%",backgroundColor:'tomato'}}>
+        <section>
             {Object.keys(details).length===0 ? <h3>Loading...</h3> :
-            <>
-                <div>
-                    <h5>{prfnm}</h5>
-                    <img src={poster} style={{width:'100%', height:"50%"}}/>
-                    <h6>{fcltynm}</h6>
-                    <span>{genrenm}</span>
-                </div>
-                <Grid container mt={2}>
+            <Card>
+                <CardHeader 
+                    title={prfnm}
+                    subheader={fcltynm}
+                />
+                <CardMedia 
+                    component="img"
+                    height="400px"
+                    objectFit="cover"
+                    image={poster}
+                    alt="poster"
+                />
+                <CardActions>
+                    <IconButton aria-label="more information" onClick={handleExpand}>
+                        <ExpandMoreIcon/>
+                    </IconButton>
+                </CardActions>
+                <Collapse in={expanded} timeout="auto" unmountOnExit>
+                    <CardContent>
+                        <Typography paragraph>공연 기간</Typography>
+                    </CardContent>
+                </Collapse>
+                    {/* <h6>{genrenm}</h6> */}
+                {/* <Grid container mt={2}>
                     <Grid item xs={4} sm={4} md={4}>
                         <Typography variant="subtitle2">공연기간</Typography>
                         <Typography variant="subtitle2">캐스팅</Typography>
@@ -43,9 +67,9 @@ const DetailEvent = ({details}) => {
                         <Typography variant="subtitle2">{prfruntime}</Typography>
                         <Typography variant="subtitle2">{pcseguidance}</Typography>
                     </Grid>
-                </Grid>
+                </Grid> */}
 
-            </>
+            </Card>
             }
         </section>
     )
