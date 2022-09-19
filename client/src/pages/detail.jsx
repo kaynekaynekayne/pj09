@@ -14,8 +14,6 @@ const Detail = () => {
 
     const [details, setDetails]=useState({});
     const [location, setLocation]=useState({lat:null, lng:null, address:null});
-    console.log("details: ",details)
-    console.log("location: ",location)
 
     const getDetails=async()=>{
         try{

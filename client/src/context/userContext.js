@@ -9,12 +9,9 @@ export const UserContextProvider=({children})=>{
     const localUser=localStorage.getItem("user");
     const [user,setUser]=useState(localUser);
 
-    console.log("userContext user: ",user);
-    
     useEffect(()=>{
         const unsubscribe=isUserLoggedIn()
         .then(resp=>{
-            console.log(resp.username)
             setUser(resp.username)
         })
         .catch(err=> {
