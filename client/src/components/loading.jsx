@@ -11,17 +11,16 @@ const Loading = () => {
 
 const LoadSection=styled.div`
     width:100%;
-    // height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
 `;
 
 const Spinner=styled.div`
-    width:3rem;
-    height:3rem;
+    width:2rem;
+    height:2rem;
     border-radius:50%;
-    border:0.4rem solid rgb(50, 185, 135);
+    border:0.4rem solid skyblue;
     border-top:0.4rem solid whitesmoke;
     animation:spin 2s linear infinite;
 
