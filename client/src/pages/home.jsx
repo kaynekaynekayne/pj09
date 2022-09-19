@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {mainEvents} from '../api/kopis';
+import {mainEvents} from '../api/kopis/kopis';
 import reformatData from '../utils/reformatData';
 import xmlConverter from '../utils/xmlConverter';
 import {Grid, Container} from '@mui/material'

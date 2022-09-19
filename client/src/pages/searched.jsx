@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { search } from '../api/kopis';
+import { search } from '../api/kopis/kopis';
 import reformatData from '../utils/reformatData';
 import xmlConverter from '../utils/xmlConverter';
 import {Grid, Container} from '@mui/material'

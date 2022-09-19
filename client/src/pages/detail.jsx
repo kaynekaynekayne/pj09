@@ -3,7 +3,7 @@ import DetailEvent from '../components/detailEvent';
 import DetailMap from '../components/detailMap';
 import {useParams} from 'react-router-dom';
 
-import {eventDetail, placeDetail} from '../api/kopis';
+import {eventDetail, placeDetail} from '../api/kopis/kopis';
 import xmlConverter from '../utils/xmlConverter';
 import reformatDetailData from '../utils/reformatDetailData';
 import {Grid, Container} from '@mui/material'
