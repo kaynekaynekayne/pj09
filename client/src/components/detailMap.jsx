@@ -15,7 +15,7 @@ import styled from 'styled-components';
 
 const containerStyle = {
     width: '100%',
-    height: '423px'
+    height: '27.5rem'
 };
 
 const DetailMap = ({location}) => {
@@ -104,7 +104,7 @@ const DetailMap = ({location}) => {
                         <ReplayTwoToneIcon />
                     </IconButton>
                 </MapIconBox>
-                <div>
+                <div style={{padding:'0.4rem'}}>
                 {distance && duration && <>
                     <span>(거리) <strong>{distance} </strong></span>
                     <span>(이동) <strong>{duration}</strong></span>

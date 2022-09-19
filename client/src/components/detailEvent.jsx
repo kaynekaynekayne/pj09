@@ -47,7 +47,7 @@ const DetailEvent = ({details}) => {
                     component="img"
                     src={poster}
                     alt="poster"
-                    sx={{ maxHeight: '420px', objectFit:'contain',}}
+                    sx={{ maxHeight: '28.5rem', objectFit:'contain',}}
                 />
                 <CardActions >
                     <IconButton aria-label="more information" onClick={handleExpand}>
