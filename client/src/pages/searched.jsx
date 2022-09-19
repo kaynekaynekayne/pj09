@@ -5,6 +5,7 @@ import reformatData from '../utils/reformatData';
 import xmlConverter from '../utils/xmlConverter';
 import {Grid, Container} from '@mui/material'
 import Card from '../components/card';
+import Loading from '../components/loading';
 
 const Searched = () => {
     const [searchedEvents, setSearchedEvents]=useState([]);
@@ -12,9 +13,7 @@ const Searched = () => {
     const [loading, setLoading]=useState(false);
 
     const params=useParams();
-    let {word}=params;
-    console.log(noResult ? "검색결과 없음" : "검색결과 목록")
-    console.log("------")
+    const {word}=params;
 
     const getSearchingLists=async()=>{
         try{
@@ -41,15 +40,16 @@ const Searched = () => {
 
     return (
         <Container>
-            {loading ? <h4>Loading...</h4>:
+            {loading ? <Loading />:(
                 noResult ? <h5>검색 결과 없음</h5> :
-                    <Grid container spacing={4} mb={5}> 
-                        {searchedEvents.map((event)=>
-                            <Grid item xs={12} sm={6} md={3} key={event.mt20id}>
-                                <Card event={event} stdate={event.prfpdto} eddate={event.prfpdto}/>
-                            </Grid>
-                        )}
-                    </Grid>
+                <Grid container spacing={4} mb={5}> 
+                    {searchedEvents.map((event)=>
+                        <Grid item xs={12} sm={6} md={3} key={event.mt20id}>
+                            <Card event={event} stdate={event.prfpdto} eddate={event.prfpdto}/>
+                        </Grid>
+                    )}
+                </Grid>
+                )
             }
         </Container>
     )

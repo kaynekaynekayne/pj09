@@ -11,6 +11,7 @@ import {
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import trimFullYear from '../utils/trimFullYear';
 import styled from 'styled-components';
+import Loading from './loading';
 
 
 const DetailEvent = ({details}) => {
@@ -37,7 +38,7 @@ const DetailEvent = ({details}) => {
 
     return (
         <section>
-            {Object.keys(details).length===0 ? <h3>Loading...</h3> :
+            {Object.keys(details).length===0 ? <Loading /> :
             <Card>
                 <CardHeader 
                     title={prfnm}

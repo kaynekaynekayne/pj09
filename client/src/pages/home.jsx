@@ -4,6 +4,7 @@ import reformatData from '../utils/reformatData';
 import xmlConverter from '../utils/xmlConverter';
 import {Grid, Container} from '@mui/material'
 import Card from '../components/card';
+import Loading from '../components/loading';
 
 const Home = () => {
 
@@ -26,7 +27,7 @@ const Home = () => {
 
     return (
         <Container>
-            {events.length===0 ? <h2>Loading...</h2> :
+            {events.length===0 ? <Loading /> :
             <Grid container spacing={4} mb={5}> 
                 {events.map((event)=>
                     <Grid item xs={12} sm={6} md={3} key={event.mt20id}>

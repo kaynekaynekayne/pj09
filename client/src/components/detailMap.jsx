@@ -12,6 +12,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import DirectionsTransitIcon from '@mui/icons-material/DirectionsTransit';
 import ReplayTwoToneIcon from '@mui/icons-material/ReplayTwoTone';
 import styled from 'styled-components';
+import Loading from './loading';
 
 const containerStyle = {
     width: '100%',
@@ -128,7 +129,7 @@ const DetailMap = ({location}) => {
                 {directionsResponse && <DirectionsRenderer directions={directionsResponse}/>}
             </GoogleMap>
         </section>
-    ):<h3>Loading... </h3>
+    ):<Loading />
 };
 
 const Input=styled.input`
