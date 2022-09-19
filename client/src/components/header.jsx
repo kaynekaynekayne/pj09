@@ -1,14 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Header = () => {
     return (
-        <header>
-            <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor:"rgb(54, 81, 254)"}}>
-                <Link className="navbar-brand" to="/">around</Link>
+        <HeaderStyle>
+            <nav>
+                <Link to="/" style={{color:'white', textDecoration:'none'}}>around</Link>
             </nav>
-        </header>
+        </HeaderStyle>
     );
 };
 
+const HeaderStyle=styled.header`
+    width:100%;
+    padding:0.8rem;
+    background:rgb(54, 81, 254);
+`;
 export default Header;
