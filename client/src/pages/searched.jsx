@@ -4,6 +4,7 @@ import { search } from '../api/kopis';
 import reformatData from '../utils/reformatData';
 import xmlConverter from '../utils/xmlConverter';
 import {Grid, Container} from '@mui/material'
+import SearchOffIcon from '@mui/icons-material/SearchOff';
 import Card from '../components/card';
 import Loading from '../components/loading';
 
@@ -41,7 +42,7 @@ const Searched = () => {
     return (
         <Container>
             {loading ? <Loading />:(
-                noResult ? <h5>검색 결과 없음</h5> :
+                noResult ? <div><span>결과 없음</span><SearchOffIcon fontSize="large"/></div> :
                 <Grid container spacing={4} mb={5}> 
                     {searchedEvents.map((event)=>
                         <Grid item xs={12} sm={6} md={3} key={event.mt20id}>
