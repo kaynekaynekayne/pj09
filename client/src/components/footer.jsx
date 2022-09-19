@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button} from '@mui/material';
 import Swal from 'sweetalert2'
-import {logout} from '../api/user';
+import {logout} from '../api/user/user';
 import { useNavigate } from 'react-router-dom';
 import {useUserContext} from '../context/userContext';
 

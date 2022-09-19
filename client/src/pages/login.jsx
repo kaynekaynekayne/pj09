@@ -1,10 +1,10 @@
 import React,{useState} from 'react';
-import {Button, TextField, FormControl, InputLabel, OutlinedInput, Input, IconButton, InputAdornment} from '@mui/material';
+import {Button, TextField, FormControl, InputLabel, Input, IconButton, InputAdornment} from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
-import {login} from '../api/user';
+import {login} from '../api/user/user';
 import { useUserContext } from '../context/userContext';
 
 const Login = () => {

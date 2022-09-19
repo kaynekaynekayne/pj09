@@ -1,9 +1,9 @@
-import axios from 'axios';
+import instance from './index.js';
 
 export const signup=async({username, email, password, confirmPassword}={})=>{
     const userInfo={username, email, password, confirmPassword};
     try{
-        const response=await axios.post(`${process.env.REACT_APP_LOCAL_URL}/register`,
+        const response=await instance.post('/register',
             userInfo,
             {
                 headers:{
@@ -22,7 +22,7 @@ export const signup=async({username, email, password, confirmPassword}={})=>{
 export const login=async({email, password}={})=>{
     const userInfo={email, password};
     try{
-        const response=await axios.post(`${process.env.REACT_APP_LOCAL_URL}/login`,
+        const response=await instance.post('/login',
             userInfo,
             {
                 withCredentials:true,
@@ -40,7 +40,7 @@ export const login=async({email, password}={})=>{
 
 export const logout=async()=>{
     try{
-        const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}/logout`,
+        const response=await instance.get('/logout',
             {
                 withCredentials:true,
             }
@@ -53,7 +53,7 @@ export const logout=async()=>{
 
 export const isUserLoggedIn=async()=>{
     try{
-        const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}/user`,
+        const response=await instance.get('/user',
             {
                 withCredentials:true,
                 headers:{

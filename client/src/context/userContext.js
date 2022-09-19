@@ -1,5 +1,5 @@
 import {createContext, useContext, useEffect, useState} from 'react';
-import {isUserLoggedIn} from '../api/user';
+import {isUserLoggedIn} from '../api/user/user';
 import Swal from 'sweetalert2';
 
 export const userContext=createContext(null);

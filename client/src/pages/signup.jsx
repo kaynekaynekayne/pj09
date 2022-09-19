@@ -4,7 +4,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
-import {signup} from '../api/user';
+import {signup} from '../api/user/user';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
