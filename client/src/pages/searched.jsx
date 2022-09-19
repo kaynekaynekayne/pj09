@@ -9,6 +9,7 @@ import Card from '../components/card';
 const Searched = () => {
     const [searchedEvents, setSearchedEvents]=useState([]);
     const [noResult, setNoResult]=useState(false);
+    const [loading, setLoading]=useState(false);
 
     const params=useParams();
     let {word}=params;
@@ -17,13 +18,17 @@ const Searched = () => {
 
     const getSearchingLists=async()=>{
         try{
+            setLoading(true);
             const response=await search(word);
             const data=await xmlConverter(response);
-            if(data.length===0) setNoResult(true);
-            else{
+            if(data.length===0) {
+                setNoResult(true);
+                setLoading(false);
+            }else{
                 const items=reformatData(data);
                 setSearchedEvents(items);
                 setNoResult(false);
+                setLoading(false);
             };
         }catch(err){
             console.log(err.message);
@@ -36,14 +41,15 @@ const Searched = () => {
 
     return (
         <Container>
-            {noResult ? <h5>검색 결과 없음</h5> :
-                <Grid container spacing={4} mb={5}> 
-                    {searchedEvents.map((event)=>
-                        <Grid item xs={12} sm={6} md={3} key={event.mt20id}>
-                            <Card event={event} stdate={event.prfpdto} eddate={event.prfpdto}/>
-                        </Grid>
-                    )}
-                </Grid>
+            {loading ? <h4>Loading...</h4>:
+                noResult ? <h5>검색 결과 없음</h5> :
+                    <Grid container spacing={4} mb={5}> 
+                        {searchedEvents.map((event)=>
+                            <Grid item xs={12} sm={6} md={3} key={event.mt20id}>
+                                <Card event={event} stdate={event.prfpdto} eddate={event.prfpdto}/>
+                            </Grid>
+                        )}
+                    </Grid>
             }
         </Container>
     )
