@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Box, Input, InputAdornment} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { useUserContext } from '../context/userContext';
 
 const Search = () => {
     const navigate=useNavigate();
-    const {user}=useUserContext();
 
     const [term, setTerm]=useState("");
     

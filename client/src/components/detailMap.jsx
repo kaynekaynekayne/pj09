@@ -6,7 +6,7 @@ import {
     Autocomplete,
     DirectionsRenderer,
 } from '@react-google-maps/api';
-import {IconButton, TextField} from '@mui/material'
+import {IconButton} from '@mui/material'
 import ImportExportIcon from '@mui/icons-material/ImportExport';
 import ClearIcon from '@mui/icons-material/Clear';
 import DirectionsTransitIcon from '@mui/icons-material/DirectionsTransit';
@@ -106,8 +106,8 @@ const DetailMap = ({location}) => {
                 </MapIconBox>
                 <div>
                 {distance && duration && <>
-                    <span>거리 <strong>{distance} </strong></span>
-                    <span>이동 <strong>{duration}</strong></span>
+                    <span>(거리) <strong>{distance} </strong></span>
+                    <span>(이동) <strong>{duration}</strong></span>
                 </>
                 }
                 </div>
