@@ -108,7 +108,7 @@ const DetailMap = ({location}) => {
                 <div style={{padding:'0.4rem'}}>
                 {distance && duration && <>
                     <span>(거리) <strong>{distance} </strong></span>
-                    <span>(이동) <strong>{duration}</strong></span>
+                    <span>(시간) <strong>{duration}</strong></span>
                 </>
                 }
                 </div>
