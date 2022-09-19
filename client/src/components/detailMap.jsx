@@ -70,66 +70,70 @@ const DetailMap = ({location}) => {
         setDestination("");
     };
 
-    return isLoaded ? (
+    return (
         <section>
-            <div>
-                <Autocomplete>
-                    <Input 
-                        placeholder="출발지"
-                        type="text"
-                        onChange={(e)=>setOrigin(e.target.value)}
-                        value={origin}
-                    />
-                </Autocomplete>
-                <Autocomplete>
-                    <Input
-                        placeholder="목적지"
-                        type="text"
-                        onChange={(e)=>setDestination(e.target.value)}
-                        value={destination}
-                    />
-                </Autocomplete>
-                <MapIconBox>
-                    <div>
-                        <IconButton aria-label="reverse" onClick={onToggleClick}>
-                            <ImportExportIcon/>
+            {isLoaded ? (
+            <>
+                <div>
+                    <Autocomplete>
+                        <Input 
+                            placeholder="출발지"
+                            type="text"
+                            onChange={(e)=>setOrigin(e.target.value)}
+                            value={origin}
+                        />
+                    </Autocomplete>
+                    <Autocomplete>
+                        <Input
+                            placeholder="목적지"
+                            type="text"
+                            onChange={(e)=>setDestination(e.target.value)}
+                            value={destination}
+                        />
+                    </Autocomplete>
+                    <MapIconBox>
+                        <div>
+                            <IconButton aria-label="reverse" onClick={onToggleClick}>
+                                <ImportExportIcon/>
+                            </IconButton>
+                            <IconButton aria-label="go" onClick={getRoute} color="primary">
+                                <DirectionsTransitIcon />
+                            </IconButton>
+                            <IconButton aria-label="clear" onClick={clearRoute}>
+                                <ClearIcon />
+                            </IconButton>
+                        </div>
+                        <IconButton aria-label="center" onClick={()=>map.panTo({lat,lng})}>
+                            <ReplayTwoToneIcon />
                         </IconButton>
-                        <IconButton aria-label="go" onClick={getRoute} color="primary">
-                            <DirectionsTransitIcon />
-                        </IconButton>
-                        <IconButton aria-label="clear" onClick={clearRoute}>
-                            <ClearIcon />
-                        </IconButton>
+                    </MapIconBox>
+                    <div style={{padding:'0.4rem'}}>
+                        {distance && duration && <>
+                            <span>(거리) <strong>{distance} </strong></span>
+                            <span>(시간) <strong>{duration}</strong></span>
+                        </>
+                        }
                     </div>
-                    <IconButton aria-label="center" onClick={()=>map.panTo({lat,lng})}>
-                        <ReplayTwoToneIcon />
-                    </IconButton>
-                </MapIconBox>
-                <div style={{padding:'0.4rem'}}>
-                {distance && duration && <>
-                    <span>(거리) <strong>{distance} </strong></span>
-                    <span>(시간) <strong>{duration}</strong></span>
-                </>
-                }
                 </div>
-            </div>
-            <GoogleMap
-                zoom={18}
-                center={{lat,lng}}
-                mapContainerStyle={containerStyle}
-                options={{
-                    mapTypeControl:false,
-                    streetViewControl:false,
-                    gestureHandling:'greedy',
-                }}
-                onLoad={(map)=>setMap(map)}
-                
-            >
-                <Marker position={{lat,lng}}/>
-                {directionsResponse && <DirectionsRenderer directions={directionsResponse}/>}
-            </GoogleMap>
+                <GoogleMap
+                    zoom={18}
+                    center={{lat,lng}}
+                    mapContainerStyle={containerStyle}
+                    options={{
+                        mapTypeControl:false,
+                        streetViewControl:false,
+                        gestureHandling:'greedy',
+                    }}
+                    onLoad={(map)=>setMap(map)}    
+                >
+                    <Marker position={{lat,lng}}/>
+                    {directionsResponse && <DirectionsRenderer directions={directionsResponse}/>}
+                </GoogleMap>
+            </>
+            ):<Loading />
+            }
         </section>
-    ):<Loading />
+    )
 };
 
 const Input=styled.input`

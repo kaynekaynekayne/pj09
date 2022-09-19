@@ -50,6 +50,7 @@ const Footer = () => {
 const FooterStyle=styled.footer`
     background-color:rgb(54, 81, 254);
     width:100%;
+    height:42.25px;
 `;  
 
 export default Footer;

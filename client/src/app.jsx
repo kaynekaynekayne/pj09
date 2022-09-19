@@ -12,12 +12,14 @@ function App() {
     <div>
       <Router>
         <UserContextProvider>
-          <Header />
           <MainStyle>
-            <Search />
-            <Pages />
+            <Header />
+            <InnerStyle>
+              <Search />
+              <Pages />
+            </InnerStyle>
+            <Footer/>
           </MainStyle>
-          <Footer/>
         </UserContextProvider>
       </Router>
     </div>
@@ -25,12 +27,14 @@ function App() {
 }
 
 const MainStyle=styled.div`
-    width:100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align:center;
+  display:flex;
+  min-height:100vh;
+  flex-direction:column; 
+`;
+
+const InnerStyle=styled.div`
+  flex-grow:1;
+  text-align:center;
 `;
 
 export default App;
