@@ -16,8 +16,8 @@ const Search = () => {
 
     return <Box
                 component="form"
-                mt={5}
-                mb={8}
+                mt={4}
+                mb={6}
                 onSubmit={submitHandler}>
             <div>
                 <Input
