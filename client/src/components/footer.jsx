@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import {logout} from '../api/user/user';
 import { useNavigate } from 'react-router-dom';
 import {useUserContext} from '../context/userContext';
+import styled from 'styled-components'; 
 
 const Footer = () => {
     const navigate=useNavigate();
@@ -34,7 +35,7 @@ const Footer = () => {
     }
 
     return (
-        <footer style={{backgroundColor:"rgb(54, 81, 254)",height:"3rem"}}>
+        <FooterStyle>
             {user && 
                 <Button
                     onClick={handleLogout}
@@ -42,8 +43,13 @@ const Footer = () => {
                     size="large"
                 >로그아웃</Button>
             }
-        </footer>
+        </FooterStyle>
     );
 };
+
+const FooterStyle=styled.footer`
+    background-color:rgb(54, 81, 254);
+    width:100%;
+`;  
 
 export default Footer;
