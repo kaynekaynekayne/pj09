@@ -12,6 +12,7 @@ const Home = () => {
 
     useEffect(()=>{
         getEvents();
+        console.log(events);
     },[]);
 
     const getEvents=async()=>{
