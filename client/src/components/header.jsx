@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Header = () => {
     return (
         <HeaderStyle>
-            <Link to="/" style={{color:'white', textDecoration:'none'}}>around</Link>
+            <Link to="/" style={{color:'white', textDecoration:'none'}}>around.</Link>
         </HeaderStyle>
     );
 };
