@@ -55,7 +55,11 @@ export const login=async(req,res)=>{
     const token=jwt.sign({_id:user._id},process.env.TOKEN_SECRET);
     console.log("token: ",token);
 
-    res.cookie("jwt", token, {httpOnly:true, maxAge:1000 * 60 * 60 * 24 * 3 });
+    res.cookie("jwt", token, {
+        httpOnly:true, 
+        sameSite:'none',
+        secure:true,
+    });
     const {username}=user;
     return res.status(201).json({
         message:"성공적인 로그인",
