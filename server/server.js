@@ -21,7 +21,7 @@ app.use(urlencoded({extended:false}));
 app.use(cookieParser());
 app.use(expressValidator());
 
-app.use("/", userRouter);
+app.use("/api", userRouter);
 
 const PORT=process.env.PORT || 4040;
 
